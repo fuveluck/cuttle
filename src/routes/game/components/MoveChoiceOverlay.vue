@@ -31,8 +31,10 @@
         :is-frozen="frozenId === selectedCard.id"
       />
     </div>
-    <!-- Move choices -->
+ <!-- Move choices -->
     <div id="options-wrapper" class="d-flex justify-space-between my-4">
+      <div v-if="!allMovesAreDisabled">
+      <!-- Render when moves are not disabled -->
       <MoveChoiceCard
         v-for="move in moveChoices"
         :key="move.displayName"
@@ -44,6 +46,11 @@
         :card-width="cardWidth"
         @choose-move="$emit(move.eventName, move)"
       />
+    </div>
+    <div v-else>
+      <!-- Render something else or handle the case when moves are disabled -->
+      <p>Moves are disabled.</p>
+    </div>
     </div>
   </v-overlay>
 </template>
