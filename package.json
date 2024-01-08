@@ -3,6 +3,7 @@
   "description": "The deepest card game under the sea",
   "version": "6.9.1",
   "dependencies": {
+    "@cypress-audit/lighthouse": "^1.4.2",
     "chart.js": "4.4",
     "connect-redis": "3.0.2",
     "dayjs": "1.11",
@@ -24,6 +25,7 @@
     "vuetify": "3.4"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.12.17",
     "@mdi/font": "^7.3.67",
     "@storybook/addon-actions": "^7.6.0",
     "@storybook/addon-essentials": "^7.6.0",
@@ -39,6 +41,7 @@
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "cypress": "^13.6.0",
+    "cypress-audit": "^1.1.0",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-cypress": "^2.15.1",
@@ -48,6 +51,7 @@
     "eslint-plugin-vue": "^9.18.1",
     "eslint-plugin-vuetify": "^2.1.0",
     "husky": "^8.0.3",
+    "nyc": "^15.1.0",
     "prettier": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -83,6 +87,7 @@
     "build": "vite build",
     "e2e:client": "cypress run",
     "e2e:gui": "cypress open",
+    "test": "nyc cypress run",
     "e2e:server": "cross-env VITE_API_URL=http://localhost:1337 cypress run",
     "e2e:server:gui": "cross-env VITE_API_URL=http://localhost:1337 cypress open",
     "e2e:server:playground": "cross-env VITE_API_URL=http://localhost:1337 cypress run --config-file tests/e2e/playground/playground.config.js",

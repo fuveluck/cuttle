@@ -1,5 +1,28 @@
 const { defineConfig } = require('cypress');
 
+module.exports = {
+  e2e: {
+    baseUrl: process.env.VITE_API_URL || 'http://localhost:8080',
+    setupNodeEvents(on, config) {
+      require('@cypress/code-coverage/task')(on, config)
+      config.env = {
+        ...process.env,
+        ...config.env, // Don't overwrite `codeCoverageTasksRegistered` set by `@cypress/code-coverage/task`
+      };;
+      on("before:browser:launch", (browser = {}, launchOptions) => {
+        prepareAudit(launchOptions);
+      });
+
+      // It's IMPORTANT to return the config object
+      // with any changed environment variables
+      return config;
+    },
+  },
+};
+
+
+
+
 module.exports = defineConfig({
   projectId: 'i8bxr8',
   // https://docs.cypress.io/guides/references/configuration#e2e
@@ -23,3 +46,4 @@ module.exports = defineConfig({
   screenshotsFolder: 'tests/e2e/screenshots',
   videosFolder: 'tests/e2e/videos',
 });
+

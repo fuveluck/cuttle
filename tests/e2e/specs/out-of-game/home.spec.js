@@ -31,6 +31,13 @@ function setupGameBetweenTwoUnseenPlayers(gameName) {
   });
 }
 
+describe('Perfomance tests', () => {
+it('should run lighthouse performance audits using default thresholds', () => {
+cy.visit('/');
+cy.lighthouse();
+});
+});
+
 describe('Home - Page Content', () => {
   beforeEach(setup);
 

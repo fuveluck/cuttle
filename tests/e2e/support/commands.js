@@ -1,5 +1,6 @@
 import { getCardIds, hasValidSuitAndRank, cardsMatch, printCard } from './helpers';
 import { myUser, opponentOne, playerOne, playerTwo } from '../fixtures/userFixtures';
+import '@cypress/code-coverage/support'
 /**
  * Require & configure socket connection to server
  */
